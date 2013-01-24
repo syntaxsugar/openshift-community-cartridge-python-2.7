@@ -1,5 +1,25 @@
 #!/bin/bash
 
+cartridge_type="python-2.7"
+source "/etc/openshift/node.conf"
+source "${CARTRIDGE_BASE_PATH}/${cartridge_type}/info/lib/util"
 
-echo " ~/python-2.7/virtenv/.python-eggs" > ~/python-2.7/.env/PYTHON_EGG_CACHE
+# Import Environment Variables
+for f in ~/.env/*; do
+    source $f
+done
+
+source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
+
+pod_cart_name=$(get_pod_cartridge_name)
+
+#  Extract the tarball files -- supports .tar, .tar.gz, .tar.gz and zip files.
+extract_package_files "$OPENSHIFT_HOMEDIR/$pod_cart_name/$cartridge_type/opt"
+
+#  Add the python cartridge environment variables.
+add_cartridge_env_var "PYTHON_EGG_CACHE" "$OPENSHIFT_HOMEDIR/$cartridge_type/virtenv/.python-eggs"
+add_cartridge_env_var "LD_LIRARY_PATH" "$OPENSHIFT_HOMEDIR/$cartridge_type/opt/lib"
+
+#  Create the virtualenv.
+create_virtualenv
 

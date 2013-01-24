@@ -1,0 +1,47 @@
+#!/bin/bash
+
+cartridge_type="python-2.7"
+source "/etc/openshift/node.conf"
+source "${CARTRIDGE_BASE_PATH}/${cartridge_type}/info/lib/util"
+
+# Import Environment Variables
+for f in ~/.env/*; do
+   source $f
+done
+
+source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
+
+pod_cart_name=$(get_pod_cartridge_name)
+source "${CARTRIDGE_BASE_PATH}/${pod_cart_name}/info/bin/source_cartridge_vars"
+
+
+function _start_service() {
+   # TODO:  Startup  app server
+   #  python $path_to/app.py &
+   #  pid=$!
+
+}  #  End of function  _start_service.
+
+
+function _stop_service() {
+   # TODO:  Stop  app server
+   #  kill pid
+   #  wait and kill -9 pid
+
+}  #  End of function  _stop_service.
+
+
+function _restart_service() {
+   _stop_service  ||  :
+   _start_service
+
+}  #  End of function  _restart_service.
+
+
+
+case "$1" in
+   start)                    _start_service    ;;
+   graceful-stop|stop)       _stop_service     ;;
+   restart|reload|graceful)  _restart_service  ;;
+esac
+
