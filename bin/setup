@@ -2,12 +2,15 @@
 
 cartridge_type="python-2.7"
 source "/etc/openshift/node.conf"
-source "${CARTRIDGE_BASE_PATH}/${cartridge_type}/info/lib/util"
+
 
 # Import Environment Variables
 for f in ~/.env/*; do
     source $f
 done
+
+# RR: For testing
+exit 0
 
 source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
