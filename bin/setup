@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+echo " ~/python-2.7/virtenv/.python-eggs" > ~/python-2.7/.env/PYTHON_EGG_CACHE
+

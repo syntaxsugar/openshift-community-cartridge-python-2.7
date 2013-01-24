@@ -1,0 +1,51 @@
+#!/bin/bash
+
+cartridge_type="python-2.7"
+
+#  Ensure home directory sourced in.
+[ -z "$OPENSHIFT_HOMEDIR" ]  &&  source ~/.env/OPENSHIFT_HOMEDIR
+
+#  Setup variables.
+python27_dir=$OPENSHIFT_HOMEDIR/$cartridge_type
+python27_binary=$cart_instance_dir/opt/bin/python2.7
+virtenv_dir=$cart_instance_dir/virtenv
+
+#  Add the python2.7 shared library to the load path.
+export LD_LIBRARY_PATH="$python27_dir/opt/lib:${LD_LIBRARY_PATH}"
+
+
+#
+#  Utility functions to create/update, delete, activate and make relocatable
+#  the python-2.7 virtualenv. 
+#
+
+function create_virtualenv() {
+   pushd "$virtenv_dir" > /dev/null
+
+   # Hack to fix symlink on rsync issue
+   /bin/rm -f lib64
+   virtualenv -p $python27_binary --system-site-packages "$virtenv_dir"
+
+   popd > /dev/null
+
+}  #  End of function  create_virtualenv. 
+
+
+function delete_virtualenv() {
+   rm -rf $python27_dir/virtenv/*
+
+}  #  End of function  delete_virtualenv. 
+
+
+function activate_virtualenv() {
+   source "$virtenv_dir/bin/activate"
+
+}  #  End of function  activate_virtualenv. 
+
+
+function make_virtualenv_relocatable() {
+   virtualenv --relocatable ~/$cartridge_type/virtenv
+
+}  #  End of function  make_virtualenv_relocatable.
+
+
