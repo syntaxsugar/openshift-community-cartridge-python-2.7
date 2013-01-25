@@ -67,7 +67,7 @@ function get_pod_cartridge_dir() {
 }  #  End of function  get_pod_cartridge_dir.
 
 
-function _name_to_env_var_name {
+function _name_to_env_var_name() {
    echo "$1" | sed 's/[^A-Za-z0-9_]/_/g' | tr '[:lower:]' '[:upper:]'
 
 }  #  End of function  _convert_name_to_env_var_name.
