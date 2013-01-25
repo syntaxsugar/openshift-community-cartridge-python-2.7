@@ -11,7 +11,7 @@ source "${OPENSHIFT_HOME_DIR}/${cartridge_type}/lib/utils"
 
 # Run when jenkins is not being used or run when inside a build.
 clean_build_marker=".openshift/markers/force_clean_build"
-if [ -f "${OPENSHIFT_REPO_DIR}/$clean_build_marker" ]; then
+if [ -f "${OPENSHIFT_REPO_DIR}$clean_build_marker" ]; then
    echo "  - Found a $clean_build_marker marker - recreating virtenv ..." 1>&2
    delete_virtualenv
 fi

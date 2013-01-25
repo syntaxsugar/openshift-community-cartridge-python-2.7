@@ -12,7 +12,7 @@ done
 source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
 pod_cart_name=$(get_pod_cartridge_name)
-source "${CARTRIDGE_BASE_PATH}/${pod_cart_name}/info/bin/source_cartridge_vars"
+source "${CARTRIDGE_BASE_PATH}/$pod_cart_name/info/bin/source_cartridge_vars"
 
 
 function _start_service() {

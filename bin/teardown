@@ -19,10 +19,9 @@ delete_virtualenv
 
 #  Remove the cartridge environment variables.
 remove_cartridge_env_var "PYTHON_EGG_CACHE"
-remove_cartridge_env_var "LD_LIRARY_PATH"
 
 #  Remove the cartridge + pod directory.
-pushd "${OPENSHIFT_HOMEDIR}" >  /dev/null
+pushd "$OPENSHIFT_HOMEDIR" >  /dev/null
 #  First remove the installed community cartridge directory.
 rm -rf "$cartridge_type"
 

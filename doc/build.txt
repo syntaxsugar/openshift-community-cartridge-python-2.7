@@ -2,8 +2,8 @@
 Steps to build on RHEL 6.3 - 
 
 1. Install pre-requisites on a devenv.
-   yum install gmp-devel gdbm-devel libffi-devel libGL-devel  tar  \
-               tcl-devel tix-devel tk-devel valgrind-devel zlib-devel
+   yum install db4 db4-devel gmp-devel gdbm-devel libffi-devel libGL-devel  \
+               tar tcl-devel tix-devel tk-devel valgrind-devel zlib-devel
 
 2. Get and extract python 2.7.3 sources.
    wget  http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
