@@ -7,6 +7,7 @@ source "/etc/openshift/node.conf"
 source ~/.env/OPENSHIFT_HOMEDIR
 source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
+set -x
 pod_cart_name=$(get_pod_cartridge_name)
 
 #  Extract the tarball files -- supports .tar, .tar.gz, .tar.gz and zip files.
