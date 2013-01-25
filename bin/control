@@ -38,13 +38,10 @@ function _start_service() {
 
    pushd $OPENSHIFT_REPO_DIR > /dev/null
    source "$pycart_dir/activate_virtenv"
-   #  TODO: Source pre_start hook.
 
    nohup python app.py > "$pycart_dir/logs/appserver.log" 2>&1 &
    pid=$!
-
    echo "$pid" > "$pycart_dir/run/appserver.pid"
-   #  TODO: Add post_start hook call.
 
    sleep 5
    tail "$pycart_dir/logs/appserver.log"
@@ -65,7 +62,6 @@ function _stop_service() {
    fi
 
    if [ -n "$zpid" ]; then
-      #  TODO: Source pre_stop hook.
       /bin/kill $zpid
       ret=$?
       if [ $ret -eq 0 ]; then
@@ -76,7 +72,6 @@ function _stop_service() {
             let TIMEOUT=${TIMEOUT}-1
          done
       fi
-      #  TODO: Add post_stop hook call.
    fi
 
 
