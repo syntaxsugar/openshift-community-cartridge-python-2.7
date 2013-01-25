@@ -38,7 +38,7 @@ function delete_virtualenv() {
 
 
 function activate_virtualenv() {
-   source "$virtenv_dir/bin/activate"
+   source "$python27_dir/activate_virtenv"
 
 }  #  End of function  activate_virtualenv. 
 
