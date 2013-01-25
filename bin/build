@@ -3,10 +3,10 @@
 cartridge_type="python-2.7"
 
 #  Ensure home and repo directories are sourced in.
-[ -z "$OPENSHIFT_HOME_DIR" ]  &&  source ~/.env/OPENSHIFT_HOME_DIR
+[ -z "$OPENSHIFT_HOMEDIR" ]  &&  source ~/.env/OPENSHIFT_HOMEDIR
 [ -z "$OPENSHIFT_REPO_DIR" ]  &&  source ~/.env/OPENSHIFT_REPO_DIR
 
-source "${OPENSHIFT_HOME_DIR}/${cartridge_type}/lib/utils"
+source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
 
 # Run when jenkins is not being used or run when inside a build.

@@ -2,8 +2,8 @@
 
 cartridge_type="python-2.7"
 
-[ -z "$OPENSHIFT_HOME_DIR" ]  &&  source ~/.env/OPENSHIFT_HOME_DIR
-source "${OPENSHIFT_HOME_DIR}/${cartridge_type}/lib/utils"
+[ -z "$OPENSHIFT_HOMEDIR" ]  &&  source ~/.env/OPENSHIFT_HOMEDIR
+source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
 #  Create (or update if exists) and activate the virtualenv.
 create_virtualenv
