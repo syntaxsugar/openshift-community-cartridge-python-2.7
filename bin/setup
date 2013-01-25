@@ -7,7 +7,6 @@ source "/etc/openshift/node.conf"
 source ~/.env/OPENSHIFT_HOMEDIR
 source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
-set -x
 
 #  Extract the tarball files -- supports .tar, .tar.gz, .tar.gz and zip files.
 extract_package_files "${OPENSHIFT_HOMEDIR}/$cartridge_type/opt"
@@ -23,6 +22,7 @@ create_virtualenv
 cat > "${OPENSHIFT_HOMEDIR}/$cartridge_type/activate_virtenv"  <<AVEOF
 #  Set the library path so that the python 2.7 shared library can be found.
 export LD_LIBRARY_PATH="${OPENSHIFT_HOMEDIR}/$cartridge_type/opt/lib:\${LD_LIBRARY_PATH}" 
+export LIBRARY_PATH="${OPENSHIFT_HOMEDIR}/$cartridge_type/opt/lib:\${LIBRARY_PATH}" 
 source ${OPENSHIFT_HOMEDIR}/$cartridge_type/virtenv/bin/activate
 AVEOF
 
