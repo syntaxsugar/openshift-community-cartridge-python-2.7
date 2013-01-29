@@ -3,12 +3,11 @@
 cartridge_type="python-2.7"
 source "/etc/openshift/node.conf"
 
+#  Import environment variables.
+source "${CARTRIDGE_BASE_PATH}/${cartridge_type}/info/bin/source_env_vars"
 
-# Import Environment Variables
-for f in ~/.env/*; do
-    source $f
-done
-
+#  Source in the utility functions.
+[ -z "$OPENSHIFT_HOMEDIR" ]  &&  source ~/.env/OPENSHIFT_HOMEDIR
 source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
 #  Stop the processes.
@@ -19,14 +18,4 @@ delete_virtualenv
 
 #  Remove the cartridge environment variables.
 remove_cartridge_env_var "PYTHON_EGG_CACHE"
-
-#  Remove the cartridge + pod directory.
-pushd "$OPENSHIFT_HOMEDIR" >  /dev/null
-#  First remove the installed community cartridge directory.
-rm -rf "$cartridge_type"
-
-#  And then remove the cloned cartridge dir.
-cd "$(get_pod_cartridge_name)"
-rm -rf "$cartridge_type"
-popd >  /dev/null
 

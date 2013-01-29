@@ -20,7 +20,11 @@ export LD_LIBRARY_PATH="${python27_dir}/opt/lib:${LD_LIBRARY_PATH}"
 #
 
 function create_virtualenv() {
-   pushd "$virtenv_dir" > /dev/null
+   if [ -d "$virtenv_dir" ]; then
+      pushd "$virtenv_dir" > /dev/null
+   else
+      pushd . > /dev/null
+   fi
 
    # Hack to fix symlink on rsync issue
    /bin/rm -f lib64
@@ -50,22 +54,8 @@ function make_virtualenv_relocatable() {
 
 
 #
-#  Misc utility functions - get pod cartridge name/directory, add/remove
-#  environment variables and extract package files.
+#  Misc functions - add/remove environment variables and extract package files.
 #
-
-function get_pod_cartridge_name() {
-   #  FIXME: do this more generically using an env var or something.
-   echo "community-pod-0.1"
-
-}  #  End of function  get_pod_cartridge_name.
-
-
-function get_pod_cartridge_dir() {
-   echo "${OPENSHIFT_HOMEDIR}/$(get_pod_cartridge_name)/"
-
-}  #  End of function  get_pod_cartridge_dir.
-
 
 function _name_to_env_var_name() {
    echo "$1" | sed 's/[^A-Za-z0-9_]/_/g' | tr '[:lower:]' '[:upper:]'
@@ -93,26 +83,38 @@ function remove_cartridge_env_var() {
 }  #  End of function  remove_cartridge_env_var.
 
 
-function extract_package_files() {
-   [ -d "$1" ]  ||  return 1
+function _extract_files() {
+   pkgdir=${1:-"."}
+   destdir=${2:-"."}
 
+   [ -d "$pkgdir" ]  ||  return 1
+ 
    #  In place extract the tarball files -- supports .tgz, .tar.gz, .tar and
    #  zip files and in that order.
-   pushd "$1" > /dev/null
+   mkdir -p "$destdir"
+   pushd "$destdir" > /dev/null
 
-   for f in `ls *.tgz *.tar.gz`; do
+   for f in `ls $pkgdir/*.tgz $pkgdir/*.tar.gz 2> /dev/null`; do
       tar -zxf "$f"
    done
 
-   for f in `ls *.tar`; do
+   for f in `ls $pkgdir/*.tar 2> /dev/null`; do
       tar -xf "$f"
    done
 
-   for f in `ls *.zip`; do
+   for f in `ls $pkgdir/*.zip 2> /dev/null`; do
       unzip "$f"
    done
 
    popd > /dev/null
+
+}  #  End of function  _extract_files.
+
+
+function extract_package_files() {
+   #  Try the machine specific packages first and then the top level packages.
+   _extract_files "$1/$(uname -m)" "$1"
+   _extract_files "$1" "$1"
 
 }  #  End of function  extract_package_files.
 

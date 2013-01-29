@@ -23,4 +23,7 @@ Steps to build on RHEL 6.3 -
 5. Install it to $HOME/build/python-2.7.
    make install 
 
+6. Created a gzipped pod of the installation.
+   tar -cvf /tmp/python-2.7-x86_64-install.tar -C $HOME/build/python-2.7 ./
+   gzip /tmp/python-2.7-x86_64-install.tar
 

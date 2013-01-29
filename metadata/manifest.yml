@@ -1,17 +1,26 @@
 Name: python-2.7
-Display-Name: Python 2.7
-Description: "Python is a general-purpose, high-level programming language whose design philosophy emphasizes code readability. Popular development frameworks include: Django, Bottle, Pylons, Zope and TurboGears."
+Display-Name: Python 2.7 Community Cartridge
+Description: "Community supported Python 2.7 cartridge. See the community site for examples of bringing your cartridge to OpenShift. Python is a general-purpose, high-level programming language whose design philosophy emphasizes code readability. Popular development frameworks include: Django, Bottle, Pylons, Zope and TurboGears."
 Version: 1.0.0
-License: ASL 2.0
-Vendor: www.python.org
+License: "ASL 2.0"
+License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
+Vendor:
 Categories:
-  - cartridge
+  - service
   - python
   - web_framework
+  - community
 Website: "http://www.python.org"
 Help-Topics:
   "Developer Center": https://openshift.redhat.com/community/developers
+  "Getting Started": https://www.openshift.com/community/videos/getting-started-with-diy-applications-on-openshift
 Cart-Data:
+  - Key: OPENSHIFT_LOG_DIR
+    Type: environment
+    Description: "Directory to store application log files."
+  - Key: OPENSHIFT_TMP_DIR
+    Type: environment
+    Description: "Directory to store application temporary files."
   - Key: OPENSHIFT_REPO_DIR
     Type: environment
     Description: "Application root directory where application files reside. This directory is reset everytime you do a git-push"
@@ -27,6 +36,9 @@ Cart-Data:
   - Key: OPENSHIFT_APP_NAME
     Type: environment
     Description: "Application name"
+  - Key: OPENSHIFT_DATA_DIR
+    Type: environment
+    Description: "Directory to store application data files. Preserved across git-pushes. Not shared across gears."
   - Key: OPENSHIFT_APP_UUID
     Type: environment
     Description: "Unique ID which identified the application. Does not change between gears."
@@ -34,15 +46,13 @@ Cart-Data:
     Type: environment
     Description: "Unique ID which identified the gear. This value changes between gears."
 Suggests:
-    
 Provides:
   - "wsgi"
-  - "wsgi (version) = 3.2"
+  - "gevent"
 Requires:
 Conflicts:
 Native-Requires:
   - python
-  - mod_wsgi = 3.2
   - MySQL-python
   - pymongo
   - pymongo-gridfs
@@ -82,4 +92,10 @@ Subscribes:
 Scaling:
   Min: 1
   Max: -1
+Group-Overrides:
+  - components:
+    - python-2.7
+    - web_proxy
+Endpoints:
+  - PROXY_PORT: 8080
 

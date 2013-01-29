@@ -1,12 +1,14 @@
 #!/bin/bash
 
 cartridge_type="python-2.7"
-
-# Import config, env variables we need + the utility functions
 source "/etc/openshift/node.conf"
-source ~/.env/OPENSHIFT_HOMEDIR
-source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
+#  Import environment variables.
+source "${CARTRIDGE_BASE_PATH}/${cartridge_type}/info/bin/source_env_vars"
+
+#  Source in the utility functions.
+[ -z "$OPENSHIFT_HOMEDIR" ]  &&  source ~/.env/OPENSHIFT_HOMEDIR
+source "${OPENSHIFT_HOMEDIR}/${cartridge_type}/lib/utils"
 
 #  Extract the tarball files -- supports .tar, .tar.gz, .tar.gz and zip files.
 extract_package_files "${OPENSHIFT_HOMEDIR}/$cartridge_type/opt"
