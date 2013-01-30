@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-cartridge_type=python-2.7
+cartridge_type="python-2.7"
 
 #  Source node.conf and util if not sourced in.
 if [ -z "$CARTRIDGE_BASE_PATH" ]; then
