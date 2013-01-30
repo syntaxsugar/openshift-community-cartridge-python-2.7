@@ -32,3 +32,15 @@ a fast WSGI server based on libevent-http (from gevent).
 For more details, see: http://www.gevent.org/  
 
 
+
+ssh/virtualenv Caveats
+----------------------
+When you ssh into your app/gear, you will need to source in a script to setup the library paths and activate the virtualenv python 2.7 is installed under.  
+
+    ssh  $guid@$app-$ns.rhcloud.com
+    rhcsh> source python-2.7/activate_virtenv
+
+
+And last but not least, enjoy your flight ... http://xkcd.com/353/
+
+
