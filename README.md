@@ -23,18 +23,18 @@ Template Sample Application Caveats
 -----------------------------------
 
 The default template application is optimized for app creation times/speed
-and so will run a simple WSGI HTTP server on app creation. 
+and so will run a simple WSGI HTTP server on app creation.
 For more details, see: http://docs.python.org/2/library/wsgiref.html#module-wsgiref.simple_server
 
 And on a first git push (without any code/setup modifications), the app
 template's setup.py will install greenlet and gevent and run the app with
 a fast WSGI server based on libevent-http (from gevent).
-For more details, see: http://www.gevent.org/  
+For more details, see: http://www.gevent.org/
 
 
 ssh/virtualenv Caveats
 ----------------------
-When you ssh into your app/gear, you will need to source in a script to setup the library paths and activate the virtualenv python 2.7 is installed under.  
+When you ssh into your app/gear, you will need to source in a script to setup the library paths and activate the virtualenv python 2.7 is installed under.
 
     ssh  $guid@$app-$ns.rhcloud.com
     rhcsh> source python-2.7/activate_virtenv
