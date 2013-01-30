@@ -1,4 +1,4 @@
-openshift-community-cartridge-python-2.7
+OpenShift Community Python 2.7 Cartridge
 ========================================
 
 This git repository is a community supported cartridge to help you get
@@ -16,7 +16,7 @@ Create a namespace, if you haven't already do so
 
 Create a python-2.7 application (you can name it anything via -a)
 
-    rhc app create -a pecanpie -t python-2.7
+    rhc app create pecanpie python-2.7
 
 
 Template Sample Application Caveats
@@ -32,7 +32,6 @@ a fast WSGI server based on libevent-http (from gevent).
 For more details, see: http://www.gevent.org/  
 
 
-
 ssh/virtualenv Caveats
 ----------------------
 When you ssh into your app/gear, you will need to source in a script to setup the library paths and activate the virtualenv python 2.7 is installed under.  
@@ -40,7 +39,8 @@ When you ssh into your app/gear, you will need to source in a script to setup th
     ssh  $guid@$app-$ns.rhcloud.com
     rhcsh> source python-2.7/activate_virtenv
 
-
-And last but not least, enjoy your flight ... http://xkcd.com/353/
+.    
+.    
+... And last but not least, enjoy your flight ... http://xkcd.com/353/
 
 
