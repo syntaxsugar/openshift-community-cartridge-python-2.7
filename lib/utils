@@ -123,7 +123,7 @@ function get_distro_name_and_release() {
                distro="fedora"
             fi
          fi
-         version=$lsb_release -r | awk '{print $2}')
+         version=$(lsb_release -r | awk '{print $2}')
      fi
    fi
 
