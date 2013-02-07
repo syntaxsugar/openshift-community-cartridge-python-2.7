@@ -42,7 +42,8 @@ function _start_service() {
    sleep 5
    tail "$pycart_dir/logs/appserver.log"
 
-   popd > /dev/null
+   #BZ 908673
+   #popd > /dev/null
 
 }  #  End of function  _start_service.
 
