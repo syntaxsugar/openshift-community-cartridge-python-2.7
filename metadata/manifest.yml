@@ -1,12 +1,12 @@
-Name: python-2.7
+Name: Python27
 Cartridge-Short-Name: PYTHON27
 Display-Name: Python 2.7 Community Cartridge
 Description: "Community supported Python 2.7 cartridge. See the community site for examples of bringing your cartridge to OpenShift. Python is a general-purpose, high-level programming language whose design philosophy emphasizes code readability. Popular development frameworks include: Django, Bottle, Pylons, Zope and TurboGears."
-Version: "2.0.0"
+Version: "0.1"
 License: None
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Vendor: Custom Cartridges INC
-Cartridge-Version: 2.0.0
+Cartridge-Version: 0.0.1
 Cartridge-Vendor: customcart
 Categories:
   - service
