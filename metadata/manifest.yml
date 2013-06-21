@@ -47,3 +47,15 @@ Provides:
   - "wsgi"
 Requires:
 Conflicts:
+Native-Requires:
+  - python
+  - MySQL-python
+  - pymongo
+  - pymongo-gridfs
+  - python-psycopg2
+  - python-virtualenv
+  - libjpeg
+  - libjpeg-devel
+  - libcurl
+  - libcurl-devel
+Architecture: noarch
