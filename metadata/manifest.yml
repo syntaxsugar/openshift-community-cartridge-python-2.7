@@ -1,15 +1,20 @@
-Name: python27 
-Cartridge-Short-Name: PYTHON
-Display-Name: HTTPD Cartridge
-Description: A httpd cartridge for development use only.
-Version: '0.1'
-License: None
-Vendor: FooBar
-Cartridge-Version: 0.0.1
-Cartridge-Vendor: customcarts
+Name: python-2.7
+Cartridge-Short-Name: PYTHON27
+Display-Name: Python 2.7 Community Cartridge
+Description: "Community supported Python 2.7 cartridge. See the community site for examples of bringing your cartridge to OpenShift. Python is a general-purpose, high-level programming language whose design philosophy emphasizes code readability. Popular development frameworks include: Django, Bottle, Pylons, Zope and TurboGears."
+Version: 1.0.0
+License: "ASL 2.0"
+License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
+Vendor: Blah
 Categories:
   - service
+  - python
   - web_framework
+  - community
+Website: "http://www.python.org"
+Help-Topics:
+  "Developer Center": https://openshift.redhat.com/community/developers
+  "Getting Started": https://www.openshift.com/community/videos/getting-started-with-diy-applications-on-openshift
 Cart-Data:
   - Key: OPENSHIFT_LOG_DIR
     Type: environment
@@ -59,6 +64,8 @@ Native-Requires:
   - libcurl
   - libcurl-devel
 Architecture: noarch
+Reservations:
+  - MEM >= 100MB
 Start-Order: wsgi
 Publishes:
   get-doc-root:
@@ -83,6 +90,13 @@ Subscribes:
   set-mongo-connection-info:
     Type: "NET_TCP:db:mongo"
     Required : false
+Scaling:
+  Min: 1
+  Max: -1
+Group-Overrides:
+  - components:
+    - python-2.7
+    - web_proxy
 Endpoints:
   - Private-IP-Name:   IP
     Private-Port-Name: PORT
