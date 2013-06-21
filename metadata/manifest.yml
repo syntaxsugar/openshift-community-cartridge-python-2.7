@@ -7,6 +7,7 @@ License: None
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Vendor: Custom Cartridges INC
 Cartridge-Version: 2.0.0
+Cartridge-Vendor: customcart
 Categories:
   - service
   - python
