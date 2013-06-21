@@ -1,4 +1,4 @@
-Name: python-2.7 
+Name: python27 
 Cartridge-Short-Name: PYTHON
 Display-Name: HTTPD Cartridge
 Description: A httpd cartridge for development use only.
