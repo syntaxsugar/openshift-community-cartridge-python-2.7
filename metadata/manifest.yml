@@ -84,4 +84,11 @@ Subscribes:
     Type: "NET_TCP:db:mongo"
     Required : false
 Endpoints:
-  - PROXY_PORT: '8080'
+  - Private-IP-Name:   IP
+    Private-Port-Name: PORT
+    Private-Port:      8080
+    Public-Port-Name:  PROXY_PORT
+    Mappings:
+      - Frontend:      ""
+        Backend:       ""
+        Options:       { websocket: false }
