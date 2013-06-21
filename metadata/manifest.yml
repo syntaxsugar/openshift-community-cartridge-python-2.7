@@ -66,8 +66,6 @@ Native-Requires:
   - libcurl
   - libcurl-devel
 Architecture: noarch
-Reservations:
-  - MEM >= 100MB
 Start-Order: wsgi
 Publishes:
   get-doc-root:
