@@ -59,8 +59,6 @@ Native-Requires:
   - libcurl
   - libcurl-devel
 Architecture: noarch
-Reservations:
-  - MEM >= 100MB
 Start-Order: wsgi
 Publishes:
   get-doc-root:
@@ -85,5 +83,3 @@ Subscribes:
   set-mongo-connection-info:
     Type: "NET_TCP:db:mongo"
     Required : false
-Endpoints:
-  - PROXY_PORT: 8080
