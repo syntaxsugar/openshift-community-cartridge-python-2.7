@@ -1,5 +1,5 @@
-Name: httpd
-Cartridge-Short-Name: HTTPD
+Name: python-2.7 
+Cartridge-Short-Name: PYTHON
 Display-Name: HTTPD Cartridge
 Description: A httpd cartridge for development use only.
 Version: '0.1'
@@ -8,8 +8,8 @@ Vendor: FooBar
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: customcarts
 Categories:
-- service
-- web_framework
+  - service
+  - web_framework
 Cart-Data:
   - Key: OPENSHIFT_LOG_DIR
     Type: environment
@@ -85,3 +85,5 @@ Subscribes:
   set-mongo-connection-info:
     Type: "NET_TCP:db:mongo"
     Required : false
+Endpoints:
+  - PROXY_PORT: 8080
